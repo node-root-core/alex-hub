@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alex Hub | DevOps Tools</title>
+    <style>
+        /* === БАЗОВЫЕ СТИЛИ === */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0D0D0D;
+            color: #00FF41;
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* === КОНТЕЙНЕР === */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* === HEADER (ТЕРМИНАЛ) === */
+        .terminal-header {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #00FF41;
+            background: rgba(0, 255, 65, 0.02);
+        }
+
+        .terminal-line {
+            margin: 5px 0;
+            white-space: pre-wrap;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 18px;
+            background: #00FF41;
+            animation: blink 1s infinite;
+            vertical-align: middle;
+        }
+
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+
+        /* === LINK TREE === */
+        .link-tree {
+            margin-bottom: 40px;
+        }
+
+        .link-tree h2 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .link-item {
+            display: block;
+            margin: 10px 0;
+            padding: 12px;
+            border: 1px solid #00FF41;
+            text-decoration: none;
+            color: #00FF41;
+            transition: all 0.3s;
+        }
+
+        .link-item:hover {
+            background: #00FF41;
+            color: #0D0D0D;
+        }
+
+        .link-item .icon {
+            margin-right: 10px;
+        }
+
+        /* === УТИЛИТЫ (ВКЛАДКИ) === */
+        .utilities {
+            margin-bottom: 40px;
+        }
+
+        .utilities h2 {
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .tab-btn {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid #00FF41;
+            color: #00FF41;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: #00FF41;
+            color: #0D0D0D;
+        }
+
+        .tab-content {
+            display: none;
+            padding: 20px;
+            border: 1px solid #00FF41;
+            background: rgba(0, 255, 65, 0.02);
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* === ФОРМЫ === */
+        textarea,
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            background: #0D0D0D;
+            border: 1px solid #00FF41;
+            color: #00FF41;
+            font-family: inherit;
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: transparent;
+            border: 1px solid #00FF41;
+            color: #00FF41;
+            font-family: inherit;
+            cursor: pointer;
+            margin: 5px;
+            transition: all 0.3s;
+        }
+
+        button:hover {
+            background: #00FF41;
+            color: #0D0D0D;
+        }
+
+        .output {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #00FF41;
+            background: rgba(0, 255, 65, 0.05);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        /* === FOOTER === */
+        .footer {
+            text-align: center;
+            padding: 20px;
+            border-top: 1px solid #00FF41;
+            margin-top: 40px;
+            font-size: 0.9em;
+        }
+
+        /* === АДАПТИВНОСТЬ === */
+        @media (max-width: 600px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="terminal-header">
+            <div class="terminal-line">root@alex-hub:~$ whoami</div>
+            <div class="terminal-line">> Alex | 10th Grade | Aspiring Senior DevOps & Security Enthusiast</div>
+            <div class="terminal-line">> Location: Kaluga, RU</div>
+            <div class="terminal-line">> Status: Building fault-tolerant systems.<span class="cursor"></span></div>
+        </div>
+
+        <!-- LINK TREE -->
+        <div class="link-tree">
+            <h2>root@alex-hub:~$ ls -la ~/projects/</h2>
+            <a href="https://academy.alexvpn.ru" class="link-item" target="_blank">
+                <span class="icon">[📁]</span> ./academy -> Академия без ашибок (Self-hosted, 7-level resilience)
+            </a>
+            <a href="https://t.me/akademia_ashibok_bot" class="link-item" target="_blank">
+                <span class="icon">[🤖]</span> ./akademia_ashibok_bot -> Главный бот Академии
+            </a>
+            <a href="https://github.com/твой-ник" class="link-item" target="_blank">
+                <span class="icon">[🔗]</span> ./github -> Мой GitHub профиль
+            </a>
+        </div>
+
+        <!-- УТИЛИТЫ -->
+        <div class="utilities">
+            <h2>root@alex-hub:~$ ./devops-tools</h2>
+            
+            <div class="tabs">
+                <button class="tab-btn active" onclick="showTab('base64')">Base64</button>
+                <button class="tab-btn" onclick="showTab('json')">JSON</button>
+                <button class="tab-btn" onclick="showTab('subnet')">Subnet</button>
+                <button class="tab-btn" onclick="showTab('password')">Password</button>
+                <button class="tab-btn" onclick="showTab('counter')">Counter</button>
+            </div>
+
+            <!-- Base64 -->
+            <div id="base64" class="tab-content active">
+                <h3>Base64 Encoder/Decoder</h3>
+                <textarea id="base64-input" rows="5" placeholder="Введи текст для кодирования/декодирования..."></textarea>
+                <button onclick="encodeBase64()">[ ENCODE ]</button>
+                <button onclick="decodeBase64()">[ DECODE ]</button>
+                <button onclick="copyOutput('base64-output')">[ COPY ]</button>
+                <div id="base64-output" class="output">Результат появится здесь...</div>
+            </div>
+
+            <!-- JSON -->
+            <div id="json" class="tab-content">
+                <h3>JSON Formatter</h3>
+                <textarea id="json-input" rows="5" placeholder="Вставь кривой JSON..."></textarea>
+                <button onclick="formatJSON()">[ BEAUTIFY ]</button>
+                <button onclick="copyOutput('json-output')">[ COPY ]</button>
+                <div id="json-output" class="output">Отформатированный JSON появится здесь...</div>
+            </div>
+
+            <!-- Subnet -->
+            <div id="subnet" class="tab-content">
+                <h3>Subnet Calculator</h3>
+                <input type="text" id="subnet-ip" placeholder="IP Address (например: 192.168.0.0)">
+                <input type="text" id="subnet-cidr" placeholder="CIDR (например: /24)">
+                <button onclick="calculateSubnet()">[ CALCULATE ]</button>
+                <div id="subnet-output" class="output">Результат расчёта появится здесь...</div>
+            </div>
+
+            <!-- Password -->
+            <div id="password" class="tab-content">
+                <h3>Password Generator</h3>
+                <label>Длина: <input type="number" id="pass-length" value="16" min="8" max="64"></label>
+                <label><input type="checkbox" id="pass-upper" checked> Uppercase (A-Z)</label>
+                <label><input type="checkbox" id="pass-numbers" checked> Numbers (0-9)</label>
+                <label><input type="checkbox" id="pass-symbols" checked> Symbols (!@#$)</label>
+                <button onclick="generatePassword()">[ GENERATE ]</button>
+                <button onclick="copyOutput('pass-output')">[ COPY ]</button>
+                <div id="pass-output" class="output">Пароль появится здесь...</div>
+            </div>
+
+            <!-- Counter -->
+            <div id="counter" class="tab-content">
+                <h3>Word & Character Counter</h3>
+                <textarea id="counter-input" rows="5" placeholder="Введи текст для подсчёта..."></textarea>
+                <button onclick="countWords()">[ COUNT ]</button>
+                <div id="counter-output" class="output">Статистика появится здесь...</div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="footer">
+            [ SYSTEM STATUS: OPERATIONAL ] | Uptime: 99.9% | Rendered in 0.002s<br>
+            © 2026 Alex Cyber-Box. Zero maintenance guaranteed.
+        </div>
+    </div>
+
+    <script>
+        // === ПЕРЕКЛЮЧЕНИЕ ВКЛАДОК ===
+        function showTab(tabName) {
+            // Скрыть все вкладки
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Показать нужную
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        // === КОПИРОВАНИЕ В БУФЕР ===
+        function copyOutput(elementId) {
+            const text = document.getElementById(elementId).innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Скопировано!');
+            });
+        }
+
+        // === BASE64 ===
+        function encodeBase64() {
+            const input = document.getElementById('base64-input').value;
+            try {
+                const encoded = btoa(unescape(encodeURIComponent(input)));
+                document.getElementById('base64-output').innerText = encoded;
+            } catch (e) {
+                document.getElementById('base64-output').innerText = 'Ошибка: ' + e.message;
+            }
+        }
+
+        function decodeBase64() {
+            const input = document.getElementById('base64-input').value;
+            try {
+                const decoded = decodeURIComponent(escape(atob(input)));
+                document.getElementById('base64-output').innerText = decoded;
+            } catch (e) {
+                document.getElementById('base64-output').innerText = 'Ошибка: ' + e.message;
+            }
+        }
+
+        // === JSON FORMATTER ===
+        function formatJSON() {
+            const input = document.getElementById('json-input').value;
+            try {
+                const parsed = JSON.parse(input);
+                const formatted = JSON.stringify(parsed, null, 2);
+                document.getElementById('json-output').innerText = formatted;
+            } catch (e) {
+                document.getElementById('json-output').innerText = 'Ошибка: ' + e.message;
+            }
+        }
+
+        // === SUBNET CALCULATOR (заглушка) ===
+        function calculateSubnet() {
+            document.getElementById('subnet-output').innerText = 'Функция в разработке...';
+        }
+
+        // === PASSWORD GENERATOR (заглушка) ===
+        function generatePassword() {
+            document.getElementById('pass-output').innerText = 'Функция в разработке...';
+        }
+
+        // === WORD COUNTER (заглушка) ===
+        function countWords() {
+            document.getElementById('counter-output').innerText = 'Функция в разработке...';
+        }
+    </script>
+</body>
+</html>
